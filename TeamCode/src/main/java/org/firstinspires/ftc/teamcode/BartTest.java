@@ -18,8 +18,6 @@ double yStick;
 double xStick;
 double rightStickX;
 
-//changing to test commit
-
     //Initialize
     @Override
     public void init(){
