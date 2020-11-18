@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 
-@TeleOp(name="BartTest")
+@TeleOp(name="BartTest", group = "Teleop")
 public class BartTest extends OpMode {
 
 DcMotor frontLeft;
@@ -44,19 +44,11 @@ double rightStickX;
         rightStickX = gamepad1.right_stick_x;
 
         //Left Stick Drive
-        frontLeft.setPower(xStick - yStick);
-        frontRight.setPower(yStick - xStick);
-        backLeft.setPower(xStick - yStick);
-        backRight.setPower(yStick - xStick);
-
-        //Right Stick Drive
-        frontLeft.setPower(-rightStickX);
-        frontRight.setPower(-rightStickX);
-        backLeft.setPower(-rightStickX);
-        backRight.setPower(-rightStickX);
-
-
-
+        frontLeft.setPower(xStick - yStick - rightStickX);
+        frontRight.setPower(yStick - xStick - rightStickX);
+        backLeft.setPower(xStick - yStick - rightStickX);
+        backRight.setPower(yStick - xStick - rightStickX);
+        
         //Front Intake
         if (gamepad1.x) {
             intakeFront.setPower(-1);
@@ -70,10 +62,7 @@ double rightStickX;
     //Stop
     @Override
     public void stop() {
-        frontLeft.setPower(0);
-        frontRight.setPower(0);
-        backLeft.setPower(0);
-        backRight.setPower(0);
+
 
     }
 
